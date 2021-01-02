@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const URI = "mongodb://Chawla:chawla123@cluster0-shard-00-00.8bgku.mongodb.net:27017,cluster0-shard-00-01.8bgku.mongodb.net:27017,cluster0-shard-00-02.8bgku.mongodb.net:27017/ProductDb?ssl=true&replicaSet=atlas-d37rx7-shard-0&authSource=admin&retryWrites=true&w=majority";
+const URI = "mongodb://ammarfinal:ammarfinal@cluster0-shard-00-00.ffskz.mongodb.net:27017,cluster0-shard-00-01.ffskz.mongodb.net:27017,cluster0-shard-00-02.ffskz.mongodb.net:27017/final?ssl=true&replicaSet=atlas-14crl1-shard-0&authSource=admin&retryWrites=true&w=majority";
 const connectDB = async() => {
     await mongoose.connect(URI, {
         useUnifiedTopology:true,
