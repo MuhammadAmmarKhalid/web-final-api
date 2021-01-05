@@ -1,8 +1,8 @@
 const express = require("express");
 let router = express.Router();
 const validateProduct = require("../../middlewares/validateProduct");
-const auth = require("../../middlewares/auth");
-const admin = require("../../middlewares/admin");
+//const auth = require("../../middlewares/auth");
+//const admin = require("../../middlewares/admin");
 var { Product } = require("../../models/product");
 //get products
 router.get("/", async (req, res) => {
@@ -25,10 +25,12 @@ router.get("/:id", async (req, res) => {
   }
 });
 //update a record
-router.put("/:id", validateProduct,async (req, res) => {
+router.put("/:id", async (req, res) => {
   let product = await Product.findById(req.params.id);
   product.name = req.body.name;
-  product.fee = req.body.fee;
+  product.category = req.body.category;
+  product.price = req.body.price;
+  product.details = req.body.details;
   product.image=req.body.image;
   await product.save();
   return res.send(product);
@@ -39,10 +41,12 @@ router.delete("/:id",async (req, res) => {
   return res.send(product);
 });
 //Insert a record
-router.post("/", validateProduct,async (req, res) => {
+router.post("/",async (req, res) => {
   let product = new Product();
   product.name = req.body.name;
-  product.fee = req.body.fee;
+  product.category = req.body.category;
+  product.price = req.body.price;
+  product.details = req.body.details;
   product.image =req.body.image;
   await product.save();
   return res.send(product);
